@@ -136,46 +136,46 @@ int main()
 
   if (SIZE <= 0)
   {
-    printf("Incorrect size of the given array");
+    PRINTF("Incorrect size of the given array");
     return 1;
   }
 
   max = find_minimum (test, SIZE);
-  printf("Minimum element is %d \n", max);
+  PRINTF("Minimum element is %d \n", max);
   
   max = find_maximum (test, SIZE);
-  printf("Maximum element is %d \n", max);
+  PRINTF("Maximum element is %d \n", max);
 
   mean = find_mean (test, SIZE);
-  printf("Mean is %.2f \n", mean);
+  PRINTF("Mean is %.2f \n", mean);
 
   median = find_median (test, SIZE);
-  printf("Median is %.2f \n", median);
+  PRINTF("Median is %.2f \n", median);
 
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_selection(sorted_arr, SIZE);
-  printf ("\n Array was sorted with Selection Sort:");
+  PRINTF ("\n Array was sorted with Selection Sort:");
   print_arr(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_bubble(sorted_arr, SIZE);
-  printf ("\n Array was sorted with Bubble Sort:");
+  PRINTF ("\n Array was sorted with Bubble Sort:");
   print_arr(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_bubble(sorted_arr, SIZE);
-  printf ("\n Array was sorted with Insertion Sort:");
+  PRINTF ("\n Array was sorted with Insertion Sort:");
   print_arr(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_quick(sorted_arr, SIZE);
-  printf ("\n Array was sorted with Quick Sort:");
+  PRINTF ("\n Array was sorted with Quick Sort:");
   print_arr(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_merge(sorted_arr, SIZE);
-  printf ("\n Array was sorted with Merge Sort:");
+  PRINTF ("\n Array was sorted with Merge Sort:");
   print_arr(sorted_arr, SIZE);
 
   return 0;
@@ -265,6 +265,7 @@ double find_median (unsigned char* arr, int arr_length)
 /* Prints an array of chars */
 void print_arr (unsigned char* ch_arr, int arr_length)
 {
+#ifdef VERBOSE
   int i, j;
   int rows_num, cols_num;
 
@@ -280,23 +281,24 @@ void print_arr (unsigned char* ch_arr, int arr_length)
     cols_num = arr_length/rows_num;
   }
 
-  printf ("\n");
+  PRINTF ("\n");
   for (i=0; i < rows_num; i++)
   {
     for (j = 0; j < cols_num; j++)
     {
-      printf ("%d\t", ch_arr[i*cols_num+j] );
+      PRINTF ("%d\t", ch_arr[i*cols_num+j] );
     }
-    printf ("\n");
+    PRINTF ("\n");
   }
   // if we were not able to put all elemnts in a table, print the rest  
   i= arr_length - rows_num*cols_num;
   for ( j = 0; j < i; j++ )
   {
-    printf("%d\t", ch_arr[rows_num*cols_num + j]); 
+    PRINTF("%d\t", ch_arr[rows_num*cols_num + j]); 
   }
   
-  printf ("\n");
+  PRINTF ("\n");
+#endif
 }
 
 
