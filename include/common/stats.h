@@ -105,7 +105,7 @@ double find_median (unsigned char* arr, int arr_length);
  * 
  * @return nothing
  */
-void print_arr (unsigned char* ch_arr, int arr_length);
+void print_array (unsigned char* ch_arr, int arr_length);
 
 /**
  * @brief Copies one char array to another 

@@ -19,6 +19,9 @@
 #ifndef __DATA_H__
 #define __DATA_H__
 
+#include <stdlib.h>
+#include <stdint.h>
+
 /**
  * @brief Convert data from a standard integer type into an ASCII string
  *

@@ -19,25 +19,32 @@
 #      <FILE>.asm 	- Builds <FILE>.asm assembly file
 #      <FILE>.o 	- Builds <FILE>.o object file
 #      compile-all 	- Compiles all object files, but do not link
-#      build 		- Compile and link all into a final executable c1m2.out
+#      build 		- Compile and link all into a final executable c1m4.out
 #      all 		- Same as build
-#      c1m2.out		- Same as build
+#      c1m4.out		- Same as build
 #      clean 		- Removes all generated files (*.map, *.out, *.o, *.asm, *.i, *.dep)
 #
 # Platform Overrides:
 #      PLATFORM		- HOST or MPS432, deafult is HOST
+#	   VERBOSE - YES or NO, default is YES
 #
 #------------------------------------------------------------------------------
 include sources.mk
 
 # Platform Overrides
 PLATFORM = HOST
+VERBOSE = YES
 
-TARGET = c1m2
+TARGET = c1m4
+
+ifeq ($(VERBOSE), YES)
+	VERBOSE_FLAG = -DVERBOSE	
+endif
+
 
 ifeq ($(PLATFORM), MSP432)
 	# Architectures Specific Flags
-	LINKER_FILE = -T ../msp432p401r.lds
+	LINKER_FILE = -T msp432p401r.lds
 
 	ARCH_SPEC =-mcpu=cortex-m4 \
 	           -mthumb \
@@ -66,9 +73,10 @@ endif
 
 LDFLAGS = -Wl,-Map=$(TARGET).map $(LINKER_FILE)
 CFLAGS = -Wall -g -O0 -std=c99 $(ARCH_SPEC)
-CPPFLAGS = $(INCLUDES) $(TARGET_PLATF)
+CPPFLAGS = $(INCLUDES) $(TARGET_PLATF) $(VERBOSE_FLAG) -DCOURSE1
 #DEPFLAGS = -MM -MP -MF $(basename $@).dep
 DEPFLAGS = -MM -MP 
+
 
 OBJS = $(SOURCES:.c=.o)
 ASMS = $(SOURCES:.c=.asm)
@@ -105,8 +113,8 @@ build: all
 all: $(TARGET).out
 
 $(TARGET).out: $(OBJS) $(DEPS)
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
-
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJS) -lm -o $@
+#I have added -lm to tell the linker to include the math library, resolving the reference to the sqrt function.
 
 # Full clean
 .PHONY: clean

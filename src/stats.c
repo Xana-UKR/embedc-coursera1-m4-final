@@ -30,7 +30,7 @@
 #include <stdbool.h>
 #include <stdlib.h> 
 #include "stats.h"
-
+#include "platform.h"
 
 
 /**************************Functions to help sort functions***********************/
@@ -118,7 +118,7 @@ int find_index_of_maximum_el (unsigned char* ch_arr, int arr_length);
 /* Size of the Data Set */
 #define SIZE (40) // (8)
 
-int main() 
+/* int main() 
 {
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                               114, 88,   45,  76, 123,  87,  25,  23,
@@ -156,31 +156,31 @@ int main()
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_selection(sorted_arr, SIZE);
   PRINTF ("\n Array was sorted with Selection Sort:");
-  print_arr(sorted_arr, SIZE);
+  print_array(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_bubble(sorted_arr, SIZE);
   PRINTF ("\n Array was sorted with Bubble Sort:");
-  print_arr(sorted_arr, SIZE);
+  print_array(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_bubble(sorted_arr, SIZE);
   PRINTF ("\n Array was sorted with Insertion Sort:");
-  print_arr(sorted_arr, SIZE);
+  print_array(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_quick(sorted_arr, SIZE);
   PRINTF ("\n Array was sorted with Quick Sort:");
-  print_arr(sorted_arr, SIZE);
+  print_array(sorted_arr, SIZE);
 
   copy_ch_arr(test, sorted_arr, SIZE);
   sort_merge(sorted_arr, SIZE);
   PRINTF ("\n Array was sorted with Merge Sort:");
-  print_arr(sorted_arr, SIZE);
+  print_array(sorted_arr, SIZE);
 
   return 0;
 }
- 
+*/
 
 /****************Statistics  functions****************************************/
 
@@ -263,7 +263,7 @@ double find_median (unsigned char* arr, int arr_length)
 /****************Print functions**********************************************/
 
 /* Prints an array of chars */
-void print_arr (unsigned char* ch_arr, int arr_length)
+void print_array (unsigned char* ch_arr, int arr_length)
 {
 #ifdef VERBOSE
   int i, j;
