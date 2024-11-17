@@ -326,7 +326,6 @@ int find_index_of_maximum_el (unsigned char* ch_arr, int arr_length)
 void sort_selection (unsigned char* arr, int arr_length)
 {
   int i;
-  unsigned char tmp;
   int curr_max_index;
 
   for (i=0; i < arr_length; i++)
