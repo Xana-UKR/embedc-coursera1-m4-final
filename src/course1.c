@@ -38,8 +38,26 @@ int8_t test_data1() {
   {
     return TEST_ERROR;
   }
+  
+  /***********my test code ***/
+  /*
+  for (uint8_t i =0; i <5; i++ )
+  {
+    PRINTF ("Give me an integer: ");
+    scanf("%d", &num);
+    digits = my_itoa( num, ptr, BASE_16);   
+    PRINTF("String: %s\n", ptr);
+    
+    value = my_atoi( ptr, digits, BASE_16);
+    PRINTF("  Initial number: %d\n", num);
+    PRINTF("  Final Decimal number: %d\n", value);
+  }
+  */
+  /***********my test code ***/
 
   digits = my_itoa( num, ptr, BASE_16);   
+  PRINTF("Integer: %d, String: %s\n", num, ptr);
+  
   value = my_atoi( ptr, digits, BASE_16);
   #ifdef VERBOSE
   PRINTF("  Initial number: %d\n", num);
@@ -51,6 +69,7 @@ int8_t test_data1() {
   {
     return TEST_ERROR;
   }
+
   return TEST_NO_ERROR;
 }
 
@@ -330,8 +349,8 @@ void course1(void)
   int8_t results[TESTCOUNT];
 
 
-  results[0] = 0; //test_data1();
-  results[1] = 0; //test_data2();
+  results[0] = test_data1();
+  results[1] = test_data2();
   results[2] = test_memmove1();
   results[3] = test_memmove2();
   results[4] = test_memmove3();

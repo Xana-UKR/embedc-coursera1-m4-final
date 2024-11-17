@@ -43,6 +43,12 @@
  * (including the null terminator).
  * This function needs to handle signed data.
  * You may not use any string functions or libraries
+ * 
+ * @param int32_t data - number to convert
+ * @param uint8_t * ptr - pointer where we can save resulting string 
+ * @param uint32_t base - number base from2 to 16
+ * 
+ * @return uint8_t - number of characters in the resulting sting, including end \0
  */
  uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base);
  
@@ -59,6 +65,12 @@
  * The converted 32-bit signed integer should be returned.
  * This function needs to handle signed data.
  * You may not use any string functions or libraries
+ *
+ * @param uint8_t * ptr - pointer to a number in a form of string to convert
+ * @param uint8_t digits - number of characters in the given sting, including terminator \0 and '-'
+ * @param uint32_t base - number base from 2 to 16
+ * 
+ * @return int32_t - converted number
  **/
  int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base);
  
