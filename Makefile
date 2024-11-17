@@ -113,7 +113,7 @@ build: all
 all: $(TARGET).out
 
 $(TARGET).out: $(OBJS) $(DEPS)
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJS) -lm -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJS) -lm -o $@ -g
 #I have added -lm to tell the linker to include the math library, resolving the reference to the sqrt function.
 
 # Full clean
